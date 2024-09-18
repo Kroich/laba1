@@ -45,9 +45,9 @@ package demo.parallel;
  * @author Alexander Kouznetsov, Tristan Yan
  */
 public class Complex {
-    
-    private double re;   // the real part
-    private double im;   // the imaginary part
+
+    double re;   // the real part
+    double im;   // the imaginary part
 
     /** 
      * create a new object with the given real and imaginary parts
@@ -58,6 +58,15 @@ public class Complex {
     public Complex(double real, double imag) {
         re = real;
         im = imag;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Complex complex = (Complex) obj;
+        return Double.compare(complex.re, re) == 0 &&
+                Double.compare(complex.im, im) == 0;
     }
 
     /**
